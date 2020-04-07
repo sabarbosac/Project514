@@ -6,7 +6,7 @@ class Finalproject(TethysAppBase):
     Tethys app class for Finalproject.
     """
 
-    name = 'Finalproject'
+    name = 'Winter Route Finder'
     index = 'finalproject:home'
     icon = 'finalproject/images/icon.gif'
     package = 'finalproject'
@@ -28,6 +28,17 @@ class Finalproject(TethysAppBase):
                 name='home',
                 url='finalproject',
                 controller='finalproject.controllers.home'
+            ),
+            UrlMap(
+                name='background',
+                url='finalproject/background',
+                controller='finalproject.controllers.background'
+            ),
+
+            UrlMap(
+                name='app',
+                url='finalproject/app',
+                controller='finalproject.controllers.app'
             ),
         )
 

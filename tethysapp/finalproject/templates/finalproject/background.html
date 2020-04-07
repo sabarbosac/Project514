@@ -1,0 +1,75 @@
+{% extends "tethys_apps/app_base.html" %}
+
+{% load static %}
+
+{% block title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_icon %}
+  {# The path you provided in your app.py is accessible through the tethys_app.icon context variable #}
+  <img src="{% if 'http' in tethys_app.icon %}{{ tethys_app.icon }}{% else %}{% static tethys_app.icon %}{% endif %}" />
+{% endblock %}
+
+{# The name you provided in your app.py is accessible through the tethys_app.name context variable #}
+{% block app_title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_navigation_items %}
+
+{% url 'finalproject:home' as home_url %}
+{% url 'finalproject:background' as background_url %}
+{% url 'finalproject:app' as app_url %}
+
+<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
+<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
+<li class="{% if request.path == APP_url %}active{% endif %}"><a href="{{ app_url }}">APP Page</a></li>
+
+
+
+{% endblock %}
+
+{% block app_content %}
+ <CENTER><h1> WINTER ROUTE FINDER</h1> </CENTER>
+
+<h3>Background</h3>
+
+<p> -The purpose of this app will compute the best route to take on snowy winter days.  The route needs to combine
+    efficiency (quickest path) and safety (clear roads). The reason to choose this project is because in winter sometime
+    is really dangerous to drive and this application would help people to move from one place to another by the safest
+    route decreasing the car accidents.    </p>
+
+<div id = "image-content">
+
+      <CENTER><img src="{% static 'lovers_abts/images/mocoa.jpeg' %}" alt="Trulli" width="500" height="400"> </CENTER>
+</div>
+
+
+</div>
+<p> -  Other interesting purpose to develop this app
+    is to identify the natural zones to avoid build constructions.
+    The district order to lay down a luxurious illegal house in the Eastern Hills of Bogota" (SEMANA Magazine)
+    It is a house of almost 7,000 square meters that was within a forest reserve area.
+    The CAR (Acronym name for regional autonomous corporation) fined the owners with 476 million pesos (150.000 dollars).
+    This APP allows to know where are the prohibited places to build.</p>
+
+<div id = "image-content">
+
+       <CENTER><img src="{% static 'lovers_abts/images/rosales.jpg' %}" alt="Trulli" width="500" height="400"> </CENTER>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block app_actions %}
+{% endblock %}
+
+{% block content_dependent_styles %}
+  {{ block.super }}
+  <link href="{% static 'lovers_abts/css/background.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block scripts %}
+  {{ block.super }}
+  <script src="{% static 'lovers_abts/js/main.js' %}" type="text/javascript"></script>
+{% endblock %}
