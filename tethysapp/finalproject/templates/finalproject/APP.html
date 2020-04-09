@@ -1,13 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "finalproject/base.html" %}
+
+
+{% load static %}
+
+{% block title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_icon %}
+  {# The path you provided in your app.py is accessible through the tethys_app.icon context variable #}
+  <img src="{% if 'http' in tethys_app.icon %}{{ tethys_app.icon }}{% else %}{% static tethys_app.icon %}{% endif %}" />
+{% endblock %}
+
+{# The name you provided in your app.py is accessible through the tethys_app.name context variable #}
+{% block app_title %}{{ tethys_app.name }}{% endblock %}
+
+{% block app_navigation_items %}
+
+{% url 'finalproject:home' as home_url %}
+{% url 'finalproject:background' as background_url %}
+{% url 'finalproject:app' as app_url %}
+
+<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
+<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
+<li class="{% if request.path == APP_url %}active{% endif %}"><a href="{{ app_url }}">APP Page</a></li>
+
+{% endblock %}
+
+
+
+
+
+
+{% block header_buttons %}
+  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
+    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
+  </div>
+{% endblock %}
+
+{% block app_content %}
+
+
+
+
+
 <div id='map' style='width: 100%; height:530px;'></div>
+{% endblock %}
 
 
 
-</body>
-</html>
+{% block app_actions %}
+{% endblock %}
+
+
+
+
+

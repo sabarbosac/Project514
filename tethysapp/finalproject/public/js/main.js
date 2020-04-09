@@ -35,32 +35,3 @@ map.addLayer(MQ.routing.routeLayer({
 
 
 
-//
-//
-//
-// window.onload = function() {
-//
-//    var map,
-//        dir;
-//
-//    map = L.map('map', {
-//        layers: MQ.mapLayer(),
-//        center: [ 39.419220,-111.950684 ],
-//        zoom: 9
-//    });
-//
-//    dir = MQ.routing.directions();
-//
-//    dir.route({
-//        locations: [
-//            'utah',
-//            { latLng: { lat: 39.346797, lng: -111.547966 }},
-//            { city: 'utah', state: 'ut' }
-//        ]
-//    });
-//
-//    map.addLayer(MQ.routing.routeLayer({
-//        directions: dir,
-//        fitBounds: true
-//    }));
-//}
