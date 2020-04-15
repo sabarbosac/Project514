@@ -16,19 +16,19 @@
 
 {% url 'finalproject:home' as home_url %}
 {% url 'finalproject:background' as background_url %}
-{% url 'finalproject:app' as app_url %}
+{% url 'finalproject:map' as map_url %}
 
 <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
 <li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == APP_url %}active{% endif %}"><a href="{{ app_url }}">APP Page</a></li>
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">APP Page</a></li>
 
 {% endblock %}
 
 
 {% block app_content %}
- <CENTER><h1> WINTER ROUTE FINDER</h1> </CENTER>
+ <CENTER><h1><strong> WINTER ROUTE FINDER</strong></h1></CENTER>
 
-<h3><font size="6">Background </font></h3>
+<h3><font size="6"><strong>Background </strong></font></h3>
 
 <p> <font size="4">The purpose of this app is to compute the best route to take on snowy winter days.  The route needs to combine
     efficiency (quickest path) and safety (clear roads). The reason to choose this project is because in winter

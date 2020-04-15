@@ -8,7 +8,7 @@ class Finalproject(TethysAppBase):
 
     name = 'Winter Route Finder'
     index = 'finalproject:home'
-    icon = 'finalproject/images/icon.gif'
+    icon = 'finalproject/images/winter.jpeg'
     package = 'finalproject'
     root_url = 'finalproject'
     color = '#2c3e50'
@@ -36,9 +36,9 @@ class Finalproject(TethysAppBase):
             ),
 
             UrlMap(
-                name='app',
-                url='finalproject/app',
-                controller='finalproject.controllers.app'
+                name='map',
+                url='finalproject/map',
+                controller='finalproject.controllers.map'
             ),
         )
 

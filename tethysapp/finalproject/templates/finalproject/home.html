@@ -3,43 +3,66 @@
 {% load static %}
 
 
-<link rel="stylesheet" type="text/css" href="{% static 'finalproject/home.css' %}">
 
-body {
-<td class="tdStyle">
-}
 {% block app_content %}
 
+<style>
+.div1 {
+background-color: white;
+  width: 700px;
+  padding: 5px;
+  margin: 20px;
+}
+.div2 {
+background-color: white;
+  width: 400px;
+  margin: 5px;
+  height:200:
+}
+.div3 {
+background-color: white;
+  width: 400px;
+  margin: 5px;
+  height:50:
+}
+</style>
+
+<div  style = "background-image: url({% static 'finalproject/images/winter_route.jpg' %});">
 
 
- <CENTER> <h1><font size="7">¡¡¡Winter Route Finder App!!!</font></h1></CENTER>
+     <CENTER> <div class="div1"><font size="7"><strong>¡¡¡Winter Route Finder App!!!</strong></font></div></CENTER>
 
-<br>     </br>
+    <br>
+    <div class="div2"><font size="5"><strong>Steps to Use the App</strong></font></div>
 
-<h1>Steps to Use the App</h1>
+    <div class="div2"><font size="4"><strong>1. Insert the initial point </br>
+        2. Select a station to include in the route </br>
+        3. Insert the final point </br>
+        4. Follow the route </strong></font></div>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <br>     </br>
+    <div class="div3"; align="right"><font size="4"><strong>This app has been created by Sergio Barbosa</strong></font></div>
 
-<h2><font size="3">1. Click on the region you would like to Investigate in Columbia </br>
-    2. Once in the Region, Draw a polygon around the area you would like to have more information about </br>
-    3. The map below shows an example of the winter route finder </font></h2>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<br>     </br>
-<p align="right"><font size="4">This app has been created by Sergio Barbosa</font></p>
+</div>
+
 
 
 {% endblock %}
 
 
 {% block app_actions %}
-  {% gizmo save_button %}
-  {% gizmo edit_button %}
-  {% gizmo remove_button %}
-  {% gizmo previous_button %}
-  {% gizmo next_button %}
+
+{% endblock %}
+
+
+{% block scripts %}
+  {{ block.super }}
+
 {% endblock %}

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from tethys_sdk.permissions import login_required
-from tethys_sdk.gizmos import Button
+
+import os
+import json
+from .app import Finalproject as app
 
 
 
@@ -9,15 +12,29 @@ def background(request):
     """
     Controller for the page.
     """
+    print("background")
     context = {}
     return render(request, 'finalproject/background.html', context)
 
 @login_required()
-def app(request):
+def map(request):
     """
     Controller for the page.
     """
-    context = {}
+    print("app")
+    print("entering the getCountriesFile function")
+    print(app)
+    app_workspace = app.get_app_workspace()
+    file_path = os.path.join(app_workspace.path, 'stations.json')
+    print(file_path)
+    data_dict = {}
+    with open(file_path) as json_data:
+        data_dict = json.load(json_data)
+    print(data_dict)
+    context = {
+        "stations": data_dict
+    }
+    # context = {}
     return render(request, 'finalproject/APP.html', context)
 
 @login_required()
@@ -25,68 +42,5 @@ def home(request):
     """
     Controller for the app home page.
     """
-    save_button = Button(
-        display_text='',
-        name='save-button',
-        icon='glyphicon glyphicon-floppy-disk',
-        style='success',
-        attributes={
-            'data-toggle':'tooltip',
-            'data-placement':'top',
-            'title':'Save'
-        }
-    )
-
-    edit_button = Button(
-        display_text='',
-        name='edit-button',
-        icon='glyphicon glyphicon-edit',
-        style='warning',
-        attributes={
-            'data-toggle':'tooltip',
-            'data-placement':'top',
-            'title':'Edit'
-        }
-    )
-
-    remove_button = Button(
-        display_text='',
-        name='remove-button',
-        icon='glyphicon glyphicon-remove',
-        style='danger',
-        attributes={
-            'data-toggle':'tooltip',
-            'data-placement':'top',
-            'title':'Remove'
-        }
-    )
-
-    previous_button = Button(
-        display_text='Previous',
-        name='previous-button',
-        attributes={
-            'data-toggle':'tooltip',
-            'data-placement':'top',
-            'title':'Previous'
-        }
-    )
-
-    next_button = Button(
-        display_text='Next',
-        name='next-button',
-        attributes={
-            'data-toggle':'tooltip',
-            'data-placement':'top',
-            'title':'Next'
-        }
-    )
-
-    context = {
-        'save_button': save_button,
-        'edit_button': edit_button,
-        'remove_button': remove_button,
-        'previous_button': previous_button,
-        'next_button': next_button
-    }
-
+    context = {}
     return render(request, 'finalproject/home.html', context)

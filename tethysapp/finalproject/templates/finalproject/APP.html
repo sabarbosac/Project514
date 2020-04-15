@@ -17,15 +17,12 @@
 
 {% url 'finalproject:home' as home_url %}
 {% url 'finalproject:background' as background_url %}
-{% url 'finalproject:app' as app_url %}
+{% url 'finalproject:map' as app_url %}
 
 <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
 <li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == APP_url %}active{% endif %}"><a href="{{ app_url }}">APP Page</a></li>
-
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">APP Page</a></li>
 {% endblock %}
-
-
 
 
 
@@ -36,16 +33,202 @@
   </div>
 {% endblock %}
 
+
+
+
 {% block app_content %}
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 1px;
+  height: 200px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+<form action="/action_page.php">
+  <div class="row">
+      <div class="column" style="background-color:#ccc;">
+        <h1><font size="4"><strong>Insert the initial coordinates</strong></font></h1>
+          <label for="ipointlat">Latitude:</label>
+          <input type="text" id="ipointlat" name="ipointlat"><br><br>
+          <label for="ipointlon">Longitude:</label>
+          <input type="text" id="ipointlon" name="ipointlon">
+         <br>
+         <br>
+         <button id= "submit" type="button">Submit</button>
+      </div>
+
+
+    <div class="column" style="background-color:#ccc;">
+        <div id="number">
+            <h1><font size="4"><strong>Select the station</strong></font></h1>
+            <select id="stations_select">
+                <option value="2432 Murray">2432 Murray</option>
+                <option value="2433 Cottonwood">2433 Cottonwood</option>
+                <option value="2435 Silver Summit">2435 Silver Summit</option>
+                <option value="2436 Wanship">2436 Wanship</option>
+                <option value="2438A Wahsatch">2438A Wahsatch</option>
+                <option value="2437 Kamas">2437 Kamas</option>
+                <option value="2438 Echo">2438 Echo</option>
+                <option value="2445 Landscape">2445 Landscape</option>
+                <option value="Region 3 Office">Region 3 Office</option>
+                <option value="3445 Strawberry">3445 Strawberry</option>
+                <option value="3433 Tabiona">3433 Tabiona</option>
+                <option value="3433A Pinon Ridge">3433A Pinon Ridge</option>
+                <option value="3434 Duchesne">3434 Duchesne</option>
+                <option value="3434A Indian Canyon">3434A Indian Canyon</option>
+                <option value="3435 Roosevelt">3435 Roosevelt</option>
+                <option value="3436 Manila">3436 Manila</option>
+                <option value="3437 Vernal">3437 Vernal</option>
+                <option value="3437A Greendale Junction">3437A Greendale Junction</option>
+                <option value="3421 Eureka">3421 Eureka</option>
+                <option value="3422 Nephi">3422 Nephi</option>
+                <option value="3422A Levan">3422A Levan</option>
+                <option value="3422B Mills">3422B Mills</option>
+                <option value="4483B Lynndyl">4483B Lynndyl</option>
+                <option value="3424 Santaquin">3424 Santaquin</option>
+                <option value="3426 Spanish Fork">3426 Spanish Fork</option>
+                <option value="3426A Thistle">3426A Thistle</option>
+                <option value="3423 Lehi">3423 Lehi</option>
+                <option value="3428 Saratoga">3428 Saratoga</option>
+                <option value="3425 Provo Canyon">3425 Provo Canyon</option>
+                <option value="3427 Provo/Orem">3427 Provo/Orem</option>
+                <option value="3431 Heber City">3431 Heber City</option>
+                <option value="Region 4 East Area Office">Region 4 East Area Office</option>
+                <option value="4456 Huntington">4456 Huntington</option>
+                <option value="4459 Wellington">4459 Wellington</option>
+                <option value="4460 Colton">4460 Colton</option>
+                <option value="4460A Scofield">4460A Scofield</option>
+                <option value="4460B Castle Gate">4460B Castle Gate</option>
+                <option value="4461 Mount Pleasant">4461 Mount Pleasant</option>
+                <option value="4461A Fairview Canyon">4461A Fairview Canyon</option>
+                <option value="4461B Mount Pleasant Materials Yard">4461B Mount Pleasant Materials Yard</option>
+                <option value="4462 Gunnison">4462 Gunnison</option>
+                <option value="4450 Bluff">4450 Bluff</option>
+                <option value="4451 Blanding">4451 Blanding</option>
+                <option value="4452 Monticello">4452 Monticello</option>
+                <option value="4452A La Sal">4452A La Sal</option>
+                <option value="4453 Moab">4453 Moab</option>
+                <option value="4454 Thompson">4454 Thompson</option>
+                <option value="4454A Westwater">4454A Westwater</option>
+                <option value="4455 Green River">4455 Green River</option>
+                <option value="4457 Emery">4457 Emery</option>
+                <option value="4457A Secret Mesa">4457A Secret Mesa</option>
+                <option value="4457B Fremont Junction">4457B Fremont Junction</option>
+                <option value="4463 Salina">4463 Salina</option>
+                <option value="4464 Richfield">4464 Richfield</option>
+                <option value="4465 Sevier">4465 Sevier</option>
+                <option value="Traffic Operations Center">Traffic Operations Center</option>
+                <option value="UDOT Headquarters">UDOT Headquarters</option>
+                <option value="Region 1 Office">Region 1 Office</option>
+                <option value="1448 Sardine Summit">1448 Sardine Summit</option>
+                <option value="1445 Logan Summit">1445 Logan Summit</option>
+                <option value="1431 Snowville">1431 Snowville</option>
+                <option value="1431A Park Valley">1431A Park Valley</option>
+                <option value="1432 Bothwell">1432 Bothwell</option>
+                <option value="1433 Riverside">1433 Riverside</option>
+                <option value="1435 Wellsville">1435 Wellsville</option>
+                <option value="1436 Logan">1436 Logan</option>
+                <option value="1436A Richmond">1436A Richmond</option>
+                <option value="1437 Laketown">1437 Laketown</option>
+                <option value="1437A Randolph">1437A Randolph</option>
+                <option value="1423 Brigham City">1423 Brigham City</option>
+                <option value="1423A Hot Springs">1423A Hot Springs</option>
+                <option value="1421 Hooper">1421 Hooper</option>
+                <option value="1422 Ogden">1422 Ogden</option>
+                <option value="1424 Clearfield">1424 Clearfield</option>
+                <option value="1425 Huntsville">1425 Huntsville</option>
+                <option value="1426 Morgan">1426 Morgan</option>
+                <option value="1427 Centerville">1427 Centerville</option>
+                <option value="Region 2 Office">Region 2 Office</option>
+                <option value="2421 Wendover">2421 Wendover</option>
+                <option value="2421A Grassy Mtn Materials">2421A Grassy Mtn Materials</option>
+                <option value="2422 Grantsville">2422 Grantsville</option>
+                <option value="2423 Tooele">2423 Tooele</option>
+                <option value="2423A Rush Valley">2423A Rush Valley</option>
+                <option value="2423B Dugway Materials">2423B Dugway Materials</option>
+                <option value="2424 Salt Lake West">2424 Salt Lake West</option>
+                <option value="2425 Salt Lake East">2425 Salt Lake East</option>
+                <option value="2430 Salt Lake">2430 Salt Lake</option>
+                <option value="2434 Parleys Canyon">2434 Parleys Canyon</option>
+                <option value="2444 Signs and Guardrail">2444 Signs and Guardrail</option>
+                <option value="2427 South Valley">2427 South Valley</option>
+                <option value="2431 West Jordan">2431 West Jordan</option>
+                <option value="4465A Clear Creek">4465A Clear Creek</option>
+                <option value="Region 4 Headquarters">Region 4 Headquarters</option>
+                <option value="4466 Loa">4466 Loa</option>
+                <option value="4467 Hanksville">4467 Hanksville</option>
+                <option value="Region 4 Cedar City Office">Region 4 Cedar City Office</option>
+                <option value="4468 Junction">4468 Junction</option>
+                <option value="4469 Panguitch">4469 Panguitch</option>
+                <option value="4470 Escalante">4470 Escalante</option>
+                <option value="4471 Long Valley Jct">4471 Long Valley Jct</option>
+                <option value="4471A Mt Carmel Jct A">4471A Mt Carmel Jct A</option>
+                <option value="4472 Kanab">4472 Kanab</option>
+                <option value="4473 Purgatory">4473 Purgatory</option>
+                <option value="4475 Beryl Jct">4475 Beryl Jct</option>
+                <option value="4476 Cedar City">4476 Cedar City</option>
+                <option value="4477 Cedar Mountain S">4477 Cedar Mountain S</option>
+                <option value="4479 Beaver">4479 Beaver</option>
+                <option value="4480 Milford">4480 Milford</option>
+                <option value="4481 Cove Fort">4481 Cove Fort</option>
+                <option value="4482 Meadow">4482 Meadow</option>
+                <option value="4484 Scipio">4484 Scipio</option>
+                <option value="4483 Delta">4483 Delta</option>
+                <option value="4478 Parowan">4478 Parowan</option>
+                <option value="4484A Holden">4484A Holden</option>
+                <option value="4483A Garrison">4483A Garrison</option>
+                <option value="2449 Avalanche">2449 Avalanche</option>
+                <option value="4478 Buckhorn">4478 Buckhorn</option>
+                <option value="4470B Boulder">4470B Boulder</option>
+                <option value="4470A Tropic">4470A Tropic</option>
+                <option value="4475A Central">4475A Central</option>
+                <option value="1443 Paint and Sign">1443 Paint and Sign</option>
+                <option value="1446 Signals">1446 Signals</option>
+                <option value="4466A Koosharem">4466A Koosharem</option>
+                <option value="4466B Fishlake Jct">4466B Fishlake Jct</option>
+                <option value="4473A Pintura">4473A Pintura</option>
+                <option value="4476 Cedar City">4476 Cedar City</option>
+                <option value="3426 Spanish Fork">3426 Spanish Fork</option>
+            </select><br>
+        </div>
+    </div>
+
+
+
+    <div class="column" style="background-color:#ccc;">
+        <h1><font size="4"><strong>Insert the final coordinates</strong></font></h1>
+        <label for="fpointlat">Latitude:</label>
+        <input type="text" id="fpointlat" name="fpointlat"><br><br>
+        <label for="fpointlon">Longitude:</label>
+        <input type="text" id="fpointlon" name="fpointlon">
+    </div>
+</div>
 
 
 
 
-
+<br>
 <div id='map' style='width: 100%; height:530px;'></div>
+
 {% endblock %}
 
 
+
+<script type="text/javascript" src="main.js"></script>
 
 {% block app_actions %}
 {% endblock %}
