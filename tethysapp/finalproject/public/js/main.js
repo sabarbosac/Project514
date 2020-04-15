@@ -48,7 +48,7 @@ buttons.addEventListener("click", function(){
         locations: [
 
               { latLng: { lat: ipointlat, lng: ipointlon }},
-           
+
 
               { latLng: { lat: stationLat, lng: stationLong }},
 
