@@ -80,10 +80,27 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
     if (err) { console.log(err); return; } // do nothing if there's an error
 
     // Otherwise show the content in a popup, or something.
-    L.popup({ maxWidth: 800})
-      .setLatLng(latlng)
-      .setContent(content)
-      .openOn(this._map);
+//    L.popup({ maxWidth: 800})
+//      .setLatLng(latlng)
+//      .setContent(content)
+//      .openOn(this._map);
+
+    let IinputLat = document.getElementById("ipointlat");
+    let IinputLon = document.getElementById("ipointlon");
+
+    let Olat= document.getElementById("fpointlat");
+    let Olon= document.getElementById("fpointlon");
+
+    if((!IinputLat.value && !IinputLon.value)&&(!Olat.value && !Olon.value)){
+       IinputLat.value = latlng.lat;
+       IinputLon.value = latlng.lng;
+    }
+    else if((IinputLat.value && IinputLon.value)&&(!Olat.value && !Olon.value)){
+       Olat.value = latlng.lat;
+       Olon.value = latlng.lng;
+    }
+
+
   }
 });
 

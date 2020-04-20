@@ -21,7 +21,7 @@
 
 <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
 <li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">APP Page</a></li>
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">MAP Page</a></li>
 {% endblock %}
 
 
@@ -215,6 +215,10 @@
         <input type="text" id="fpointlat" name="fpointlat"><br><br>
         <label for="fpointlon">Longitude:</label>
         <input type="text" id="fpointlon" name="fpointlon">
+         <br>
+         <br>
+         <button id= "reset" type="button">Reset</button>
+
     </div>
 </div>
 

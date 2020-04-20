@@ -5,13 +5,42 @@ var map = new L.Map('map',{
     center: [ 39.419220, -111.950684],
     zoom: 6
 })
+////
+//function createButton(label, container) {
+//    var btn = L.DomUtil.create('button', '', container);
+//    btn.setAttribute('type', 'button');
+//    btn.innerHTML = label;
+//    return btn;
+//}
+//
+//map.on('click', function(e) {
+//    var container = L.DomUtil.create('div'),
+//        startBtn = createButton('Start from this location', container),
+//        destBtn = createButton('Go to this location', container);
+//
+//    L.popup()
+//        .setContent(container)
+//        .setLatLng(e.latlng)
+//        .openOn(map);
+//});
+//
+//  L.DomEvent.on(startBtn, 'click', function() {
+//        control.spliceWaypoints(0, 1, e.latlng);
+//        map1.closePopup();
+//    });
+//
+//        L.DomEvent.on(destBtn, 'click', function() {
+//        control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
+//        map1.closePopup();
+//    });
+
 
 
 // Create & add OSM layer.
 var osm = new L.TileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 var stationsJSON=JSON.parse(JSON.stringify(stationsGeoJSON));
 var stationsObjectArray = stationsJSON.features;
-console.log(stationsJSON);
+console.log(stationsObjectArray);
 
 
 function test (){
@@ -28,7 +57,11 @@ function test (){
 }
 
 var buttons = document.getElementById("submit");
+var layerRoutes;
 buttons.addEventListener("click", function(){
+    if(layerRoutes){
+     map.removeLayer(layerRoutes);
+    }
     var ipointlat= document.getElementById("ipointlat").value;
     var ipointlon= document.getElementById("ipointlon").value;
 
@@ -57,12 +90,36 @@ buttons.addEventListener("click", function(){
 
         ]
     });
-
-    map.addLayer(MQ.routing.routeLayer({
+    layerRoutes = MQ.routing.routeLayer({
         directions: dir,
         fitBounds: true
-    }));
+    });
+    map.addLayer(layerRoutes);
+//    map.addLayer(MQ.routing.routeLayer({
+//        directions: dir,
+//        fitBounds: true
+//    }));
 });
+
+var resetButton = document.getElementById("reset");
+reset.addEventListener("click", function(){
+    if(layerRoutes){
+     map.removeLayer(layerRoutes);
+    }
+    var ipointlat= document.getElementById("ipointlat");
+    var ipointlon= document.getElementById("ipointlon");
+    var fpointlat= document.getElementById("fpointlat");
+    var fpointlon= document.getElementById("fpointlon");
+    console.log(ipointlat);
+    console.log(ipointlon);
+    console.log(fpointlat);
+    console.log(fpointlon);
+    ipointlat.value = '';
+    ipointlon.value= '';
+    fpointlon.value = '';
+    fpointlat.value = '';
+
+})
 
 var url = "https://geoserver.hydroshare.org/geoserver/HS-3160423bc3fc4d1f9cf8c5be05312747/wms";
 // Create & add WMS-layer.
@@ -103,5 +160,4 @@ dir = MQ.routing.directions();
 //    directions: dir,
 //    fitBounds: true
 //}));
-
 
