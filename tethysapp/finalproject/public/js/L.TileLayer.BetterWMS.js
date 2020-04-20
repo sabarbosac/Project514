@@ -5,6 +5,9 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
     //   Register a click listener, then do all the upstream WMS things
     L.TileLayer.WMS.prototype.onAdd.call(this, map);
     map.on('click', this.getFeatureInfo, this);
+    map.on('mouseover', function(){
+       console.log("hhhhhh");
+    })
 //    map.on('click', this.getLocations, this);
   },
 
@@ -79,11 +82,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
   showGetFeatureInfo: function (err, latlng, content) {
     if (err) { console.log(err); return; } // do nothing if there's an error
 
-    // Otherwise show the content in a popup, or something.
-//    L.popup({ maxWidth: 800})
-//      .setLatLng(latlng)
-//      .setContent(content)
-//      .openOn(this._map);
+
 
     let IinputLat = document.getElementById("ipointlat");
     let IinputLon = document.getElementById("ipointlon");
@@ -98,6 +97,13 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
     else if((IinputLat.value && IinputLon.value)&&(!Olat.value && !Olon.value)){
        Olat.value = latlng.lat;
        Olon.value = latlng.lng;
+    }
+    else{
+        // Otherwise show the content in a popup, or something.
+    L.popup({ maxWidth: 800})
+      .setLatLng(latlng)
+      .setContent(content)
+      .openOn(this._map);
     }
 
 
