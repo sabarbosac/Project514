@@ -19,9 +19,9 @@
 {% url 'finalproject:background' as background_url %}
 {% url 'finalproject:map' as app_url %}
 
-<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
-<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">MAP Page</a></li>
+<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home </a></li>
+<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background & Instructions</a></li>
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">Route Finder</a></li>
 {% endblock %}
 
 
@@ -61,7 +61,7 @@
 <form action="/action_page.php">
   <div class="row">
       <div class="column" style="background-color:#ccc;">
-        <h1><font size="4"><strong>Insert the initial coordinates</strong></font></h1>
+        <h1><font size="4"><strong>Initial coordinates</strong></font></h1>
           <label for="ipointlat">Latitude:</label>
           <input type="text" id="ipointlat" name="ipointlat"><br><br>
           <label for="ipointlon">Longitude:</label>
@@ -210,7 +210,7 @@
 
 
     <div class="column" style="background-color:#ccc;">
-        <h1><font size="4"><strong>Insert the final coordinates</strong></font></h1>
+        <h1><font size="4"><strong>Final coordinates</strong></font></h1>
         <label for="fpointlat">Latitude:</label>
         <input type="text" id="fpointlat" name="fpointlat"><br><br>
         <label for="fpointlon">Longitude:</label>

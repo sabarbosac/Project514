@@ -18,9 +18,9 @@
 {% url 'finalproject:background' as background_url %}
 {% url 'finalproject:map' as map_url %}
 
-<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
-<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">MAP Page</a></li>
+<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home </a></li>
+<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background & Instructions</a></li>
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">Route Finder</a></li>
 
 {% endblock %}
 
@@ -41,6 +41,16 @@
 
       <CENTER><img src="{% static 'finalproject/images/backimage.jpeg' %}" alt="Trulli" width="600" height="400"> </CENTER>
 </div>
+<br>
+<br>
+    <h3><font size="6"><strong>Instructions</strong></font></h3>
+
+    <div class="div2"><font size="4"><strong>1. A first Click in the map will be the initial point (The coordinate will be show in the initial coordinates box) </br>
+        2. A second Click in the map will be the final point (The coordinate will be show in the final coordinates box) </br>
+        3. A third Click in the red points (deployment stations) will show the attributes (The suggestion is to select the closest station in the route) </br>
+        4. Once you know the station, select it. </br>
+        5. Click in the submit button and the route will appear</br>
+        6. Finally, Use the Reset button to clean the map.</strong></font></div>
 
 
 

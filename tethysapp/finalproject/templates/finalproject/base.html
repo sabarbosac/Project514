@@ -18,9 +18,9 @@
 {% url 'finalproject:background' as background_url %}
 {% url 'finalproject:map' as app_url %}
 
-<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home Page</a></li>
-<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background Page</a></li>
-<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">MAP Page</a></li>
+<li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home </a></li>
+<li class="{% if request.path == background_url %}active{% endif %}"><a href="{{ background_url }}">Background & Instructions</a></li>
+<li class="{% if request.path == map_url %}active{% endif %}"><a href="{{ map_url }}">Route Finder</a></li>
 
 {% endblock %}
 

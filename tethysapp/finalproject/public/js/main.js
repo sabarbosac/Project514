@@ -2,39 +2,9 @@
 var dir;
 var map = new L.Map('map',{
     layers: MQ.mapLayer(),
-    center: [ 39.419220, -111.950684],
-    zoom: 6
+    center: [ 40.2338400, -111.6585300],
+    zoom: 8
 })
-////
-//function createButton(label, container) {
-//    var btn = L.DomUtil.create('button', '', container);
-//    btn.setAttribute('type', 'button');
-//    btn.innerHTML = label;
-//    return btn;
-//}
-//
-//map.on('click', function(e) {
-//    var container = L.DomUtil.create('div'),
-//        startBtn = createButton('Start from this location', container),
-//        destBtn = createButton('Go to this location', container);
-//
-//    L.popup()
-//        .setContent(container)
-//        .setLatLng(e.latlng)
-//        .openOn(map);
-//});
-//
-//  L.DomEvent.on(startBtn, 'click', function() {
-//        control.spliceWaypoints(0, 1, e.latlng);
-//        map1.closePopup();
-//    });
-//
-//        L.DomEvent.on(destBtn, 'click', function() {
-//        control.spliceWaypoints(control.getWaypoints().length - 1, 1, e.latlng);
-//        map1.closePopup();
-//    });
-
-
 
 // Create & add OSM layer.
 var osm = new L.TileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
